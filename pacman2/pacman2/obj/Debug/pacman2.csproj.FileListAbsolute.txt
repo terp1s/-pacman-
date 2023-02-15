@@ -1,0 +1,7 @@
+C:\Users\piskovat\source\repos\pacman2\pacman2\bin\Debug\pacman2.exe.config
+C:\Users\piskovat\source\repos\pacman2\pacman2\bin\Debug\pacman2.exe
+C:\Users\piskovat\source\repos\pacman2\pacman2\bin\Debug\pacman2.pdb
+C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.csprojResolveAssemblyReference.cache
+C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.csproj.CoreCompileInputs.cache
+C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.exe
+C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.pdb

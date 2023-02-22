@@ -5,3 +5,10 @@ C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.csprojResolveAs
 C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.csproj.CoreCompileInputs.cache
 C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.exe
 C:\Users\piskovat\source\repos\pacman2\pacman2\obj\Debug\pacman2.pdb
+C:\Users\Terka\Source\Repos\-pacman-\pacman2\pacman2\bin\Debug\pacman2.exe.config
+C:\Users\Terka\Source\Repos\-pacman-\pacman2\pacman2\bin\Debug\pacman2.exe
+C:\Users\Terka\Source\Repos\-pacman-\pacman2\pacman2\bin\Debug\pacman2.pdb
+C:\Users\Terka\Source\Repos\-pacman-\pacman2\pacman2\obj\Debug\pacman2.csproj.AssemblyReference.cache
+C:\Users\Terka\Source\Repos\-pacman-\pacman2\pacman2\obj\Debug\pacman2.csproj.CoreCompileInputs.cache
+C:\Users\Terka\Source\Repos\-pacman-\pacman2\pacman2\obj\Debug\pacman2.exe
+C:\Users\Terka\Source\Repos\-pacman-\pacman2\pacman2\obj\Debug\pacman2.pdb

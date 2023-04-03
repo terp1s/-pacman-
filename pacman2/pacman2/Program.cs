@@ -5,27 +5,17 @@ using System.Timers;
 
 namespace pacman2
 {
-    public enum Directions { Up = 1, Down = -1, Left = 2, Right = -2 };
-
-    class Turn
-    {
-        public Directions dir;
-
-        public Turn(Directions dir2)
-        {
-            dir = dir2;
-        }
-    }
     class Program
     {
+        //ma to nejake ty brouky (haha) ale myslenka tam je
+
         static void Main(string[] args)
         {
-            Game game = new Game(10,10);
-            Ghost ghost = new Ghost(8,7, game.gameMap);
-            
+            Game game = new Game(28,31);
+            Ghost ghost = new Ghost(8, 7, game.gameMap);
+            Ghost blinky = new Ghost(2, 2, game.gameMap);
 
             Console.WriteLine(game.PrintMap());
-            Console.ReadKey();
             
 
             while (!game.Finished)
@@ -56,9 +46,11 @@ namespace pacman2
                 }
 
                 ghost.Turn();
+                blinky.Turn();
                 Console.WriteLine(game.PrintMap());
                 Console.WriteLine(game.gameMap.Bodiky.ToString("000"));
 
+                
                 game.Finish();
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 
 namespace pacman2
@@ -9,50 +10,33 @@ namespace pacman2
     {
         //ma to nejake ty brouky (haha) ale myslenka tam je
 
+        //kdyz se potkaji 2 duchove tak se zacnou navzajem printit a vznikne lajna klonu duchu. Moje supr cupr reseni by bylo
+        //at si kazdy policko pamatuje hodnotu, ale na to abych to implementovala by nemela byt pulnoc v utery vecer zejo...
+
+        //taky je neskutecne tezky ty duchy chytit, ale pevne doufam, ze kdyz se dotknou, tak hra skonci
+
+        //jsou inteligentni tak, ze chodi alespon trochu smerem dopredu, ale pacman jim je ukradeny, tak mam duchy stoiky.
+
         static void Main(string[] args)
         {
             Game game = new Game(28,31);
-            Ghost ghost = new Ghost(8, 7, game.gameMap);
-            Ghost blinky = new Ghost(2, 2, game.gameMap);
+            Ghost ghost = new Ghost(13, 15, game.gameMap);
+            Ghost blinky = new Ghost(10, 12, game.gameMap);
+            game.gameMap.Duchove.Add(ghost);
+            game.gameMap.Duchove.Add(blinky);
 
             Console.WriteLine(game.PrintMap());
-            
 
-            while (!game.Finished)
+            async Task RunInBackground(TimeSpan timeSpan, Action action)
             {
-                
-                var tt = Console.ReadKey();
-                Console.WriteLine();
-                var t = tt.KeyChar.ToString();
-                if (t == "w")
+                var periodicTimer = new PeriodicTimer(timeSpan);
+                while (await periodicTimer.WaitForNextTickAsync())
                 {
-                    game.MoveItMoveIt(Directions.Up);
+                    action();
                 }
-                else if (t == "a")
-                {
-                    game.MoveItMoveIt(Directions.Left);
-                }
-                else if (t == "s")
-                {
-                    game.MoveItMoveIt(Directions.Down);
-                }
-                else if (t == "d")
-                {
-                    game.MoveItMoveIt(Directions.Right);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input");
-                }
-
-                ghost.Turn();
-                blinky.Turn();
-                Console.WriteLine(game.PrintMap());
-                Console.WriteLine(game.gameMap.Bodiky.ToString("000"));
-
-                
-                game.Finish();
             }
+
+            game.Play();
         }
     }
 }

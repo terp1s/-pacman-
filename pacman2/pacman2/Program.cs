@@ -27,14 +27,7 @@ namespace pacman2
 
             Console.WriteLine(game.PrintMap());
 
-            async Task RunInBackground(TimeSpan timeSpan, Action action)
-            {
-                var periodicTimer = new PeriodicTimer(timeSpan);
-                while (await periodicTimer.WaitForNextTickAsync())
-                {
-                    action();
-                }
-            }
+            
 
             game.Play();
         }

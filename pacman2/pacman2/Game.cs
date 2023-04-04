@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Timers;
+using System.Windows.Input;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace pacman2
 {
+
     class Game
     {
+        
         public Map gameMap { get; private set; }
 
         public bool Finished { get; private set; } = false;
@@ -15,66 +20,71 @@ namespace pacman2
             if (gameMap.Bodiky == 0)
             {
                 Finished = true;
-
-                Console.WriteLine("Juhu");
+                Console.Clear();
+                Console.WriteLine("\n\n\n\n\nJuhu");
             }
             else if(gameMap.Kaput() == true)
             {
                 Finished = true;
-                Console.WriteLine("Budu delat jakoze to nevidim ok?");
+                Console.WriteLine("\n\n\n\n\nBudu delat jakoze to nevidim ok?");
             }
-            Console.ReadKey();
-        }
-
-        private Timer timer1;
-        public void InitTimer()
-        {
-            timer1 = new Timer();
-            //timer1.Elapsed += new EventHandler(Play());
-            timer1.Interval = 2000; // in miliseconds
-            timer1.Start();
+            
         }
 
         public void Play()
         {
+            var sw = new Stopwatch();
+            sw.Start();
+            var lastTime = sw.ElapsedMilliseconds;
+
             while (!Finished)
             {
+                var currentTime = sw.ElapsedMilliseconds;
+                var deltaTime = currentTime - lastTime;
+                
 
-                var tt = Console.ReadKey();
-                Console.WriteLine();
-                var t = tt.KeyChar.ToString();
-                if (t == "w")
+                if(deltaTime > 200)
                 {
-                    MoveItMoveIt(Directions.Up);
-                }
-                else if (t == "a")
-                {
-                    MoveItMoveIt(Directions.Left);
-                }
-                else if (t == "s")
-                {
-                    MoveItMoveIt(Directions.Down);
-                }
-                else if (t == "d")
-                {
-                    MoveItMoveIt(Directions.Right);
-                }
-                else
-                {
-                    Console.WriteLine("Invalid input");
-                }
+                   
+                    if (Keyboard.IsKeyDown(Key.W))
+                    {
+                        MoveItMoveIt(Directions.Up);
+                    }
+                    else if (Keyboard.IsKeyDown(Key.A))
+                    {
+                        MoveItMoveIt(Directions.Left);
+                    }
+                    else if (Keyboard.IsKeyDown(Key.S))
+                    {
+                        MoveItMoveIt(Directions.Down);
+                    }
+                    else if (Keyboard.IsKeyDown(Key.D))
+                    {
+                        MoveItMoveIt(Directions.Right);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input");
+                    }
 
-                foreach (Ghost x in gameMap.Duchove)
-                {
-                    x.Turn();
+                    foreach (Ghost x in gameMap.Duchove)
+                    {
+                        x.Turn();
+                    }
+
+                    
+                    Console.WriteLine(PrintMap());
+                    Console.WriteLine(gameMap.Bodiky.ToString("000"));
+
+                    Finish();
+
+                    lastTime = currentTime;
                 }
-
-                Console.WriteLine(PrintMap());
-                Console.WriteLine(gameMap.Bodiky.ToString("000"));
-
-
-                Finish();
+                
             }
+
+            System.Threading.Thread.Sleep(5000);
+
         }
 
         public void MoveItMoveIt(Directions dir)
@@ -156,11 +166,11 @@ namespace pacman2
             gameMap.Block(10, 18, 17, 19);
             gameMap.Block(13, 20, 14, 22);
 
-            gameMap.Block(11, 24, 17, 25);
+            gameMap.Block(10, 24, 17, 25);
             gameMap.Block(13, 26, 14, 28);
 
             //dolni tecka nahoru
-            gameMap.Block(8, 24, 9, 26);
+            gameMap.Block(7, 24, 8, 26);
             gameMap.Block(2, 27, 11, 28);
 
             gameMap.Block(19, 24, 20, 26);

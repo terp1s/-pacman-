@@ -17,6 +17,7 @@ namespace pacman2
 
         //jsou inteligentni tak, ze chodi alespon trochu smerem dopredu, ale pacman jim je ukradeny, tak mam duchy stoiky.
 
+        [STAThread]
         static void Main(string[] args)
         {
             Game game = new Game(28,31);

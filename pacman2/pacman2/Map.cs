@@ -4,6 +4,13 @@ using System.Text;
 
 namespace pacman2
 {
+    enum Hodnota { Full = '.', Empty = ' ', Wall = 'X'}
+
+    class Policko
+    {
+        Hodnota Hodnota;
+
+    }
     class Map
     {
 

@@ -8,7 +8,6 @@ namespace pacman2
     {
         public Map map = new Map();
         
-
         char starePolicko = '.';
 
         public int GhostX;
